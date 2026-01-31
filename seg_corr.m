@@ -1,5 +1,9 @@
-%% Assemble data matrix [time x segment]
-
+%% seg_corr.m
+% calculates correlation matrix for segments
+% version 0.1 alpha
+% ADH 31/1/25
+%%
+% Assemble data matrix [time x segment]
 nSeg = numel(segments);
 T    = numel(t);
 
@@ -29,7 +33,7 @@ imagesc(R);
 axis equal tight;
 colorbar;
 
-caxis([-1 1]);   % correlation range
+clim([-1 1]);   % correlation range
 
 title('Inter-Segment Correlation (Longitudinal Strain Rate)');
 xlabel('Segment');

@@ -1,4 +1,6 @@
 %% LV Segment Coupling Network (TomTec 18-Segment Model)
+% version 0.1 alpha
+% 31/01/26 ADH
 
 %% -------------------------------------------------
 % Collect segment data

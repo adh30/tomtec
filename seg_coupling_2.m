@@ -1,13 +1,11 @@
-%% ========================================================
+%% seg_coupling_2.m
 % LV Segment Coupling Analysis (TomTec 18-Segment Model)
 % Plots strain-rate, network, and computes synchrony metrics
-% Author: Generated for user
-%% ========================================================
+% version 0.1 alpha
+% ADH 31/1/26
+%%
 
-%% -------------------------------
-% 1. Collect segment data
-%% -------------------------------
-
+% Collect segment data
 segments = {
     x_LongitudinalStrainRateMid_Unit_1_s__Time_ms__Segment1
     x_LongitudinalStrainRateMid_Unit_1_s__Time_ms__Segment2
@@ -28,14 +26,12 @@ segments = {
     x_LongitudinalStrainRateMid_Unit_1_s__Time_ms__Segment17
     x_LongitudinalStrainRateMid_Unit_1_s__Time_ms__Segment18
 };
-
+% identify time, t
 t = x_LongitudinalStrainMid_Unit____Time_ms__Total(:);
 nSeg = numel(segments);
 T    = numel(t);
 
-%% -------------------------------
-% 2. TomTec AHA 18-segment labels
-%% -------------------------------
+%% TomTec AHA 18-segment labels
 
 legendLabels = {
     'Basal Anterior'
@@ -60,9 +56,7 @@ legendLabels = {
     'Apical Anterolateral'
 };
 
-%% -------------------------------
-% 3. Assemble data matrix [time x segment]
-%% -------------------------------
+%% Assemble data matrix [time x segment]
 
 Y = NaN(T,nSeg);
 for i = 1:nSeg
@@ -74,9 +68,7 @@ for i = 1:nSeg
     end
 end
 
-%% -------------------------------
-% 4. Plot strain-rate waveforms
-%% -------------------------------
+%% Plot strain rate waveforms
 
 colors = lines(nSeg);
 lineStyles = {'-','--','-.',':'};
@@ -92,17 +84,13 @@ title('Mid-wall Longitudinal Strain Rate (TomTec 18-Segment)');
 grid on;
 legend(legendLabels,'Location','eastoutside','NumColumns',2,'FontSize',9);
 
-%% -------------------------------
-% 5. Compute correlation matrix
-%% -------------------------------
+%% Compute correlation matrix
 
 R = corr(Y,'Rows','pairwise');
 
-%% -------------------------------
-% 6. Build thresholded network graph
-%% -------------------------------
+%% Build thresholded network graph
 
-rThresh = 0.6;               % threshold for strong coupling
+rThresh = 0.6;               % threshold for strong coupling (arbitrary)
 Rnet = R; Rnet(eye(nSeg)==1) = 0;
 A = Rnet; A(abs(A)<rThresh)=0;
 
@@ -131,9 +119,7 @@ nodeColors(13:18,:) = repmat([0.9 0.6 0.2],6,1);
 h.NodeColor = nodeColors;
 set(gca,'FontSize',10); axis off;
 
-%% -------------------------------
-% 7. Quantitative synchrony indices
-%% -------------------------------
+%% Quantitative synchrony indices
 
 % Mean correlation
 meanCorr = mean(Rnet(:),'omitnan');
@@ -149,9 +135,7 @@ degreeVals = degree(G);
 T_degree = table(legendLabels(:),degreeVals,'VariableNames',{'Segment','Degree'});
 disp(T_degree);
 
-%% -------------------------------
-% 8. Group-level network statistics
-%% -------------------------------
+%% Group-level network statistics
 
 % Betweenness centrality
 bet = centrality(G,'betweenness');
@@ -169,8 +153,3 @@ fprintf('Network Density: %.3f\n', density);
 T_graph = table(legendLabels(:), degreeVals, bet, ...
     'VariableNames',{'Segment','Degree','Betweenness'});
 disp(T_graph);
-
-%% Optional: Clustering coefficient (requires Brain Connectivity Toolbox)
-% cc = clustering_coef_wu(abs(A));
-% T_cc = table(legendLabels(:), cc, 'VariableNames',{'Segment','Clustering'});
-% disp(T_cc);

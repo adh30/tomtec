@@ -1,5 +1,7 @@
 %% TomTec Longitudinal Strain Rate Plot (18-Segment AHA Standard)
-
+% currently only takes the midwall data and plots it. 
+% ADH 31/01/26
+%%
 % Collect segment data into a cell array
 segments = {
     x_LongitudinalStrainRateMid_Unit_1_s__Time_ms__Segment1

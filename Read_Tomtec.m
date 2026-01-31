@@ -1,6 +1,7 @@
 %% Read Tomtec data
 % Reads Tomtec curves from the text file output for further analysis.
-% Read_Tomtec (alpha 0.1): 
+% Replaces Read4D_5.m and Read_AutoStrain.m
+% Read_Tomtec (alpha 0.2) 
 % ADH 31/01/26
 %%
 clear

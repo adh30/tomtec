@@ -1,6 +1,8 @@
-%% -------------------------------
-% Graph metrics
-%% -------------------------------
+%% seg_net_metrics.m
+% Calculates graph metrics for segments
+% version 0.1 alpha
+% ADH 31/1/26
+%%
 
 % Weighted adjacency matrix (abs)
 A_w = abs(A);
@@ -25,8 +27,3 @@ fprintf('Network Density: %.3f\n', density);
 T_graph = table(legendLabels(:), deg, bet, ...
                 'VariableNames', {'Segment','Degree','Betweenness'});
 disp(T_graph);
-
-%% Optional: Clustering coefficient (requires Brain Connectivity Toolbox)
-% cc = clustering_coef_wu(A_w);
-% T_cc = table(legendLabels(:), cc, 'VariableNames', {'Segment','Clustering'});
-% disp(T_cc);

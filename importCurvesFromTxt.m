@@ -26,7 +26,7 @@ function out = parseBlock(T, col1)
 
     out = struct();
 
-    curveIdx = find(startsWith(col1, "Curves"));
+    curveIdx = find(startsWith(col1, "Curves"));    % updated to deal with AutoStrain data 
     nCurves  = numel(curveIdx);
 
     for k = 1:nCurves

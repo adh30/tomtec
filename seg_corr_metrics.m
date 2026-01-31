@@ -1,6 +1,8 @@
-%% -------------------------------
-% 1. Mean Correlation
-%% -------------------------------
+%% seg_corr_metrics
+% calculates segment correlation metrics
+% version 0.1 alpha
+% ADH 31/1/26
+%% 
 
 Rnet = R; 
 Rnet(eye(nSeg)==1) = 0;  % remove self-correlation

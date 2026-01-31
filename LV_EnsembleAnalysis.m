@@ -2,6 +2,8 @@ function results = LV_EnsembleAnalysis(Y, t, rThresh)
 % LV_EnsembleAnalysis
 %
 % Ensemble and synchrony analysis for 18-segment TomTec LV strain/strain-rate
+% version 0.1 (alpha)
+% ADH 31/01/26%
 %
 % INPUTS:
 %   Y       : [time x 18] segment data matrix

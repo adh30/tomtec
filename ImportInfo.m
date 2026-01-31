@@ -1,5 +1,8 @@
 function info = ImportInfo(filename)
 %% Set up the Import Options and import the data
+% required for Read_Tomtec.m
+% ADH 31/1/26
+%%
 opts = delimitedTextImportOptions("NumVariables", 3);
 
 % Specify range and delimiter
