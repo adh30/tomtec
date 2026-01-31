@@ -1,9 +1,10 @@
 # tomtec
 Matlab code for analysing Tomtec STE data. **NB Work in progress.**
-
 ## File contents
 ### README.md 
 - this file
+### /data
+- data folder containing anonymised Tomtec data files for test purposes.
 ### Read_tomtec.m
 - script to read tomtec files (this replaces Read_AutoStrain.m and Read4D_5.m)
 ### ImportInfo.m
