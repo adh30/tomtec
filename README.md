@@ -6,7 +6,7 @@ Matlab code for analysing Tomtec STE data. **NB Work in progress.**
 ### /data
 - data folder containing anonymised Tomtec data files for test purposes.
 ### Read_tomtec.m
-- script to read tomtec files (this replaces Read_AutoStrain.m and Read4D_5.m)
+- script to read tomtec files (this replaces Read_AutoStrain.m and Read4D_5.m). **NB this has a setting pointing to a start directory which is specific to my PC.**
 ### ImportInfo.m
 - function to read header data - required for Read_tomtec.m
 ### importCurvesFromTxt.m
